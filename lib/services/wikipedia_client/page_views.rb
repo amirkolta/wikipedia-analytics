@@ -73,7 +73,13 @@ module WikipediaClient
       # @param response [HTTParty::Response]
       #
       def build_error_response(response)
-        JSON.parse(response.body)['detail'].join('\n')
+        error_messages = JSON.parse(response.body)['detail']
+
+        if error_messages.is_a?(Array)
+          error_messages.join('\n')
+        else
+          error_messages
+        end
       end
 
       # @param article [String]
