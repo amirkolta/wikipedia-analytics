@@ -31,6 +31,10 @@ gem 'httparty'
 
 gem 'pry-byebug'
 
+# React
+gem 'react_on_rails'
+gem 'shakapacker'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

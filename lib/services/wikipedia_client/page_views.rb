@@ -22,7 +22,7 @@ module WikipediaClient
       def top(access: DEFAULT_ACCESS, year:, month:, day: 'all-days')
         path = "#{year}/#{month}/#{day}"
 
-        response = HTTParty.get(build_url(endpoint: 'top', project: 'en.wikisource', access: access, path: path), headers: headers)
+        response = HTTParty.get(build_url(endpoint: 'top', project: 'en.wikipedia', access: access, path: path), headers: headers)
 
         return build_success_response(response) if response.success?
 
@@ -46,7 +46,7 @@ module WikipediaClient
 
         path = "all-agents/#{sanitized_article}/#{granularity}/#{start_date}/#{end_date}"
 
-        response = HTTParty.get(build_url(endpoint: 'per-article', project: 'en.wikipedia.org', access: access, path: path), headers: headers)
+        response = HTTParty.get(build_url(endpoint: 'per-article', project: 'en.wikipedia', access: access, path: path), headers: headers)
 
         return build_success_response(response) if response.success?
 
