@@ -151,7 +151,8 @@ describe GetMostViewedArticleInWeek do
       expect(WikipediaClient::PageViews).to have_received(:top).with(year: '2023', month: '01', day: '06')
       expect(WikipediaClient::PageViews).to have_received(:top).with(year: '2023', month: '01', day: '07')
       
-      expect(article[0]).to eq 'Super_Popular_Page'
+      expect(article[:article]).to eq 'Super_Popular_Page'
+      expect(article[:views]).to eq 100000000
     end
 
     def build_success_client_response(wiki_response)

@@ -20,7 +20,12 @@ class GetMostViewedArticleInWeek
         start_date = start_date + 1.day
       end
       
-      article_counts.sort_by { |_, views| views }.last
+      most_viewed = article_counts.sort_by { |_, views| views }.last
+
+      {
+        article: most_viewed[0],
+        views: most_viewed[1],
+      }
     end
 
     private
