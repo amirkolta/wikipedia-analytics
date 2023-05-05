@@ -4,7 +4,7 @@ describe 'Articles', type: :request do
   describe 'GET v1/articles/:title/top_viewed_day_in_a_month' do
     let(:endpoint) {"/api/v1/articles/#{article}/top_viewed_day_in_a_month"}
     let(:article) { 'Dave_Matthews_Band' }
-    let(:params) { { year: year, month: month } }
+    let(:params) { { start_date: "#{year}-#{month}" } }
 
     context 'with valid params' do
       let(:year) {'2022'}
@@ -56,72 +56,27 @@ describe 'Articles', type: :request do
       end
     end
 
-    context 'with an invalid year param' do
-      let(:year) {'20225'}
-      let(:month) {'02'}
-
+    context 'with an invalid date param' do
       it 'renders an invalid param error' do
-        get endpoint, params: params
+        get endpoint, params: {start_date: 'not_a_date'}
 
         parsed_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(:bad_request)
         expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid year'
+        expect(parsed_response['message']).to eq 'Invalid date'
       end
     end
 
-    context 'with an invalid month param' do
-      let(:year) {'2022'}
-      let(:month) {'14'}
-
+    context 'with no date param' do
       it 'renders an invalid param error' do
-        get endpoint, params: params
+        get endpoint, params: {}
 
         parsed_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(:bad_request)
         expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid month'
-      end
-    end
-
-    context 'with no year param' do
-      it 'renders an invalid param error' do
-        get endpoint, params: { month: '3' }
-
-        parsed_response = JSON.parse(response.body)
-
-        expect(response).to have_http_status(:bad_request)
-        expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid year'
-      end
-    end
-
-    context 'with no month param' do
-      it 'renders an invalid param error' do
-        get endpoint, params: { year: '2022' }
-
-        parsed_response = JSON.parse(response.body)
-
-        expect(response).to have_http_status(:bad_request)
-        expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid month'
-      end
-    end
-
-    context 'with a single char month param' do
-      let(:year) {'2022'}
-      let(:month) {'3'}
-      
-      before do
-        allow(GetArticleTopViewedDayInMonth).to receive(:execute).and_call_original
-      end
-
-      it 'formats the month for the wikipedia client' do
-        get endpoint, params: params
-
-        expect(GetArticleTopViewedDayInMonth).to have_received(:execute).with(article: article, year: year, month: '03')
+        expect(parsed_response['message']).to eq 'Missing date'
       end
     end
   end

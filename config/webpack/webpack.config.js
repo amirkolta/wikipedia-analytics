@@ -1,6 +1,8 @@
-const { env } = require('shakapacker')
+const { env, webpackConfig, merge } = require('shakapacker')
 const { existsSync } = require('fs')
 const { resolve } = require('path')
+
+
 
 const envSpecificConfig = () => {
   const path = resolve(__dirname, `${env.nodeEnv}.js`)
@@ -12,4 +14,4 @@ const envSpecificConfig = () => {
   }
 }
 
-module.exports = envSpecificConfig()
+module.exports = merge(envSpecificConfig(), webpackConfig);

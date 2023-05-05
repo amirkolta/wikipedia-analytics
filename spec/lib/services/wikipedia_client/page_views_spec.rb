@@ -15,7 +15,7 @@ describe WikipediaClient::PageViews do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -42,7 +42,7 @@ describe WikipediaClient::PageViews do
       end
 
       context 'with full params' do
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikisource/mobile-app/2022/02/21' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/mobile-app/2022/02/21' }
   
         it 'responds with the expected format' do
           response = client.top(access: access, year: year, month: month, day: day)
@@ -53,7 +53,7 @@ describe WikipediaClient::PageViews do
       end
 
       context 'without the day param' do
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikisource/mobile-app/2022/02/all-days' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/mobile-app/2022/02/all-days' }
 
         it 'sends the day param as "all-days"' do
           response = client.top(access: access, year: year, month: month)
@@ -64,7 +64,7 @@ describe WikipediaClient::PageViews do
       end
 
       context 'without the access param' do
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikisource/all-access/2022/02/all-days' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/2022/02/all-days' }
 
         it 'sends the access param as "all-access"' do
           response = client.top(year: year, month: month)
@@ -84,7 +84,7 @@ describe WikipediaClient::PageViews do
           "detail": [
               "Given year/month/day is invalid date"
           ],
-          "uri": "/analytics.wikimedia.org/v1/pageviews/top/en.wikisource/all-access/2015/10/all-day"
+          "uri": "/analytics.wikimedia.org/v1/pageviews/top/en.wikipedia/all-access/2015/10/all-day"
         }
       end
       let(:failed_client_response) do
@@ -142,7 +142,7 @@ describe WikipediaClient::PageViews do
 
       context 'with monthly granularity' do
         let(:granularity){'monthly'}
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/mobile-app/all-agents/Dave_Matthews_Band/monthly/20230201/20230301' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/mobile-app/all-agents/Dave_Matthews_Band/monthly/20230201/20230301' }
   
         it 'responds with the expected format and sends the monthly granularity' do
           response = client.per_article(access: access, article: article, start_date: start_date, end_date: end_date, granularity: granularity)
@@ -156,7 +156,7 @@ describe WikipediaClient::PageViews do
 
       context 'with daily granularity' do
         let(:granularity){'daily'}
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/mobile-app/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/mobile-app/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
   
         it 'responds with the expected format and sends the daily granularity' do
           response = client.per_article(access: access, article: article, start_date: start_date, end_date: end_date, granularity: granularity)
@@ -167,7 +167,7 @@ describe WikipediaClient::PageViews do
       end
 
       context 'with no granularity' do
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/mobile-app/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/mobile-app/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
   
         it 'defaults to daily' do
           client.per_article(access: access, article: article, start_date: start_date, end_date: end_date)
@@ -177,7 +177,7 @@ describe WikipediaClient::PageViews do
       end
 
       context 'with no access' do
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Dave_Matthews_Band/daily/20230201/20230301' }
   
         it 'defaults to all-access' do
           client.per_article(article: article, start_date: start_date, end_date: end_date)
@@ -188,7 +188,7 @@ describe WikipediaClient::PageViews do
 
       context 'with an article that includes special characters' do
         let(:article){'Dave Matthews Band&'}
-        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/mobile-app/all-agents/Dave_Matthews_Band%26/daily/20230201/20230301' }
+        let(:wikipedia_url) { 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/mobile-app/all-agents/Dave_Matthews_Band%26/daily/20230201/20230301' }
 
         it 'sanitizes the article title and replaces spaces with underscores' do
           client.per_article(access: access, article: article, start_date: start_date, end_date: end_date)
@@ -208,7 +208,7 @@ describe WikipediaClient::PageViews do
               "start timestamp should be before the end timestamp",
               "no full months found in specified date range"
           ],
-          "uri": "/analytics.wikimedia.org/v1/pageviews/per-article/en.wikipedia.org/all-access/all-agents/Dave_Matthews_Band/monthly/2023101/20230201"
+          "uri": "/analytics.wikimedia.org/v1/pageviews/per-article/en.wikipedia/all-access/all-agents/Dave_Matthews_Band/monthly/2023101/20230201"
         }
       end
       let(:failed_client_response) do

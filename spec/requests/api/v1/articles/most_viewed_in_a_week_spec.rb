@@ -13,7 +13,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -31,7 +31,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -49,7 +49,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -67,7 +67,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -85,7 +85,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -104,7 +104,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -122,7 +122,7 @@ describe 'Articles', type: :request do
         {
           "items" => [
             {
-              "project"=>"en.wikisource",
+              "project"=>"en.wikipedia",
               "access"=>"all-access",
               "year"=>"2022",
               "month"=>"03",
@@ -166,7 +166,7 @@ describe 'Articles', type: :request do
       end
 
       def build_wiki_url(year:, month:, day:)
-        "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikisource/all-access/#{year}/#{month}/#{day}"
+        "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/#{year}/#{month}/#{day}"
       end
 
       def headers
@@ -196,7 +196,7 @@ describe 'Articles', type: :request do
 
         expect(response).to have_http_status(:bad_request)
         expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid date'
+        expect(parsed_response['message']).to eq 'Missing date'
       end
     end
   end

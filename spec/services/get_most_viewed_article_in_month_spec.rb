@@ -8,7 +8,7 @@ describe GetMostViewedArticleInMonth do
       {
         "items" => [
           {
-            "project"=>"en.wikisource",
+            "project"=>"en.wikipedia",
             "access"=>"all-access",
             "year"=>"2022",
             "month"=>"03",

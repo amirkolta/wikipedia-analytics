@@ -113,7 +113,7 @@ describe 'Articles', type: :request do
 
         expect(response).to have_http_status(:bad_request)
         expect(parsed_response['code']).to eq 3000
-        expect(parsed_response['message']).to eq 'Invalid date'
+        expect(parsed_response['message']).to eq 'Missing date'
       end
     end
   end
