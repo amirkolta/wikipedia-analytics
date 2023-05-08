@@ -13,12 +13,16 @@ const developmentEnvOnly = (clientWebpackConfig, _serverWebpackConfig) => {
 
     // eslint-disable-next-line global-require
     const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+    const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
     clientWebpackConfig.plugins.push(
       new ReactRefreshWebpackPlugin({
         overlay: {
           sockPort: devServer.port,
         },
       }),
+    );
+    clientWebpackConfig.plugins.push(
+      new ForkTSCheckerWebpackPlugin(),
     );
   }
 };

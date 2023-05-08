@@ -38,14 +38,14 @@ const ArticleTopViewedDayInAMonth = () => {
           name="title"
           rules={[{ required: true, message: 'Please provide a title!' }]}
         >
-          <Input />
+          <Input data-testid="article_title" />
         </Form.Item>
         <Form.Item
           label="Start Date"
           name="start_date"
           rules={[{ required: true, message: 'Please choose a date!' }]}
         >
-          <DatePicker picker="month" />
+          <DatePicker data-testid="start_date" picker="month" />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" loading={isLoading}>

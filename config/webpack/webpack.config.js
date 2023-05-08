@@ -1,8 +1,7 @@
-const { env, webpackConfig, merge } = require('shakapacker')
+const { env , merge } = require('shakapacker')
 const { existsSync } = require('fs')
 const { resolve } = require('path')
-
-
+const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const envSpecificConfig = () => {
   const path = resolve(__dirname, `${env.nodeEnv}.js`)
@@ -14,4 +13,4 @@ const envSpecificConfig = () => {
   }
 }
 
-module.exports = merge(envSpecificConfig(), webpackConfig);
+module.exports = envSpecificConfig();

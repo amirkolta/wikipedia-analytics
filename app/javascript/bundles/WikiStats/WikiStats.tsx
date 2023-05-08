@@ -1,11 +1,11 @@
 import React from 'react';
 import { Tabs, Layout, Menu } from 'antd';
 import type { TabsProps, MenuProps } from 'antd';
-import TopArticleInAMonth from './TopArticleInAMonth';
-import TopArticleInAWeek from './TopArticleInAWeek';
-import ArticleViewsInAMonth from './ArticleViewsInAMonth';
-import ArticleViewsInAWeek from './ArticleViewsInAWeek';
-import ArticleTopViewedDayInAMonth from './ArticleTopViewedDayInAMonth';
+import TopArticleInAMonth from './components/TopArticleInAMonth';
+import TopArticleInAWeek from './components/TopArticleInAWeek';
+import ArticleViewsInAMonth from './components/ArticleViewsInAMonth';
+import ArticleViewsInAWeek from './components/ArticleViewsInAWeek';
+import ArticleTopViewedDayInAMonth from './components/ArticleTopViewedDayInAMonth';
 
 const { Header, Content } = Layout;
 
@@ -52,7 +52,6 @@ const WikiStats = () => {
           theme="dark" 
           mode="horizontal" 
           defaultSelectedKeys={["1"]}
-          href="/wiki_stats"
           items={headerMenuItem}
         />
       </Header>

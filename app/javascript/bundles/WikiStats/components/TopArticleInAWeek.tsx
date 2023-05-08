@@ -39,7 +39,7 @@ const TopArticleInAWeek = () => {
           name="start_date"
           rules={[{ required: true, message: 'Please choose a date!' }]}
         >
-          <DatePicker picker="day" />
+          <DatePicker picker="date" />
         </Form.Item>
 
         <Form.Item>
