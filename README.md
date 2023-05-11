@@ -12,7 +12,7 @@ This apps acts as a simple wrapper to the Wikipedia Metrics API.
 
 ## **Setup**
 
-* Note: Feel free to skip all that and jump straight to https://young-smoke-8670.fly.dev/
+* Note: Feel free to skip all that and [click here](https://young-smoke-8670.fly.dev/)
 
 1. First you'll need to make sure that you have `rbenv` and `yarn` installed.
 
@@ -42,7 +42,7 @@ This apps acts as a simple wrapper to the Wikipedia Metrics API.
 ## **Ways to test**
 
 ### 1. Through the user interface: 
-  * Check it out at https://young-smoke-8670.fly.dev/
+  * [Check it out here](https://young-smoke-8670.fly.dev/)
   * You can also do this by going to localhost:3000 after booting up the server locally.
 ### 2. Through the API:
   * If you don't want to load the UI at all and would rather just send requests to the API endpoints using something like curl or Postman.
